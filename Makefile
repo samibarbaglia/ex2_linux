@@ -1,18 +1,35 @@
-random_generator: main.o generator.o error_check.o
-	gcc -o random_generator main.o generator.o error_check.o
+#compiler
+cc := gcc
 
-main.o: main.c generator.h error_check.h
-	gcc -c main.c
+#source/object files
+sources := $(filter-out preprocessed.c, $(wildcard *.c))
 
-generator.o: generator.c generator.h error_check.h
-	gcc -c generator.c
+#object files
+objs := $(patsubst %.c, %.o, $(sources))
 
-error_check.o: error_check.c error_check.h
-	gcc -c error_check.c
+#executable
+rGen = random_generator
+
+#compiler flags
+compFiles := -Wall -Wextra -Wfatal-errors -Wpedantic
+
+#build executable
+$(rGen): $(objs)
+	$(cc) $(compFiles) -o $(rGen) $(objs)
+
+o: $(sources)
+	gcc -c $(sources)
+
+.PHONY: list
+
+list:
+	@ls -la
 
 .PHONY: clean
 
 clean:
 	rm -f *.o
+
+
 	
 
