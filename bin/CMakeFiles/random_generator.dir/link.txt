@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/random_generator.dir/src/error_check.c.o CMakeFiles/random_generator.dir/src/generator.c.o CMakeFiles/random_generator.dir/src/main.c.o -o random_generator 
