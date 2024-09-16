@@ -1,21 +1,22 @@
 cmake_minimum_required(VERSION 3.22.1)
 
-project(RandomGenerator
-	VERSION 3.0
+project(random_generator
+	VERSION 4.0
 	DESCRIPTION "To be added"
-	#LANGUAGES
+	LANGUAGES C
 )
 
-include_directories(inc)
+set(CMAKE_CXX_STANDARD 17)
+
+target_include_directories(${PROJECT_NAME} PRIVATE
+	inc
+)
 
 add_executable(random_generator
-	inc/error_check.h
 	src/error_check.c
-	inc/generator.h
 	src/generator.c
 	src/main.c)
 
-target_compile_features(random_generator PUBLIC c_std_17)
 
 target_compile_options(random_generator PRIVATE 
 	-Wall
@@ -23,14 +24,3 @@ target_compile_options(random_generator PRIVATE
 	-Wfatal-errors
 	-Wpedantic
 )
-
-
-
-target_compile_options(random_generator PRIVATE 
-	-Wall
-	-Wextra
-	-Wfatal-errors
-	-Wpedantic
-)
-
-
